@@ -54,12 +54,12 @@ func (AWS *AmazonWebServices) SendMessage() {
 		MessageBody: aws.String("Hello, World!"),
 		QueueUrl:    &AWS.queueURL,
 	}
-	result, err := AWS.SQS.SendMessage(&message)
+	_, err := AWS.SQS.SendMessage(&message)
 	if err != nil {
-		fmt.Errorf("Error", err)
+		fmt.Println("Error: ", err)
 		return
 	}
-	fmt.Println("Successful Post. ID = ", *result.MessageId)
+	fmt.Println("Success: Sent message to SQS")
 }
 
 //ReadMessage reads a message from SQS

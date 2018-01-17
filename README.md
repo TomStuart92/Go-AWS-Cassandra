@@ -15,3 +15,4 @@ CREATE KEYSPACE tom WITH REPLICATION = { 'class': 'SimpleStrategy', 'replication
 CREATE TABLE tom.test (id text PRIMARY KEY, body text);
 SELECT * FROM tom.test; (To test)
 
+logLevel=fatal go test

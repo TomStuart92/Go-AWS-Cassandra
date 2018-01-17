@@ -1,4 +1,5 @@
 
+https://github.com/cdimascio/go-bunyan-logger
 
 clone
 
@@ -16,3 +17,4 @@ CREATE TABLE tom.test (id text PRIMARY KEY, body text);
 SELECT * FROM tom.test; (To test)
 
 logLevel=fatal go test
+go run main.go | bunyan

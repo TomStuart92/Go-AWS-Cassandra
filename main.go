@@ -128,9 +128,9 @@ func PersistMessage(Cass CassandraClient, channel chan *sqs.Message) {
 	err := Cass.SaveItem(messageID, body)
 
 	if err != nil {
-		Log.Errorf("Unable To Read Message From SQS")
+		Log.Errorf("Unable To Save To Cassandra")
 	}
-	Log.Info("Zero Messages Received")
+	Log.Info("Message Saved To Cassandra")
 }
 
 func main() {
@@ -140,6 +140,7 @@ func main() {
 	defer Cassandra.Session.Close()
 
 	messageChannel := make(chan *sqs.Message)
+	defer close(messageChannel)
 
 	go func() {
 		for {
